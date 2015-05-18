@@ -1,4 +1,13 @@
-<ion-view view-title="安全認證查詢">
+<ion-view >
+   <ion-nav-title>
+     <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <div ng-click="ksearch('i')"><i class="icon ion-ios-search placeholder-icon"></i></div>
+        
+        <input type="search" placeholder="安全認證查詢" >
+      </label>
+    </div>
+  </ion-nav-title>
   <ion-content>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/safe/{{chat.id}}">

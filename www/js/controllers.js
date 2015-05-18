@@ -2,6 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('safeQueryCtrl', function($scope,Safes,fav) {
    $scope.chats = Safes.all();
+
     $scope.add = function(chat,event) {
     if(fav.add(chat)){
       console.log('成功');
@@ -12,6 +13,10 @@ angular.module('starter.controllers', [])
     event.target.parentElement.style.className +="  invisible";
     event.target.parentElement.previousElementSibling.style.cssText =" ";
   }
+  $scope.searchEntity={txt:''};
+  $scope.ksearch= function(t){
+      console.log('Hi ' + t );
+   }
 })
 
 .controller('unsafeQueryCtrl', function($scope, Chats) {
