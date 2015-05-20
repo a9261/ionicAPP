@@ -69,6 +69,15 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    search:function(txt){
+      var result=[];
+      for (var i = 0; i < chats.length; i++) {
+        if (chats[i].name.indexOf(txt)>-1) {
+          result.push(chats[i]);
+        }
+      }
+      return result;
     }
   };
 })
@@ -141,6 +150,17 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    search:function(txt){
+      var result=[];
+
+      for (var i = 0; i < safes.length; i++) {
+        if (safes[i].name.indexOf(txt)>-1) {
+          result.push(safes[i]);
+        }
+      }
+      console.log(result.length);
+      return result;
     }
   };
 
@@ -163,6 +183,15 @@ angular.module('starter.services', [])
         return 1;
       }else{ return 0;}
 
+    },
+    search:function(txt){
+      var result=[];
+      for (var i = 0; i < favs.length; i++) {
+        if (favs[i].name.indexOf(txt)>-1) {
+          result.push(favs[i]);
+        }
+      }
+      return result;
     }
   };
 
