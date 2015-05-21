@@ -48,6 +48,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+.state('tab.safe-detail', {
+        url: '/safe/:chatId',
+        views: {
+          'tab-safeQuery': {
+            templateUrl: 'templates/query-detail.html',
+            controller: 'safeDetailCtrl'
+          }
+        }
+      })
+
   .state('tab.unsafeQuery', {
       url: '/chats',
       views: {
@@ -57,17 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-
-    .state('tab.safe-detail', {
-        url: '/safe/:chatId',
-        views: {
-          'tab-safeQuery': {
-            templateUrl: 'templates/query-detail.html',
-            controller: 'safeDetailCtrl'
-          }
-        }
-      })
-    
+  
     .state('tab.unsafe-detail', {
       url: '/unsafe/:chatId',
       views: {
@@ -96,7 +96,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'FavCtrl'
       }
     }
-  });
+  })
+
+.state('tab.fav-detail', {
+        url: '/fav/:chatId',
+        views: {
+          'tab-fav': {
+            templateUrl: 'templates/query-detail.html',
+            controller: 'safeDetailCtrl'
+          }
+        }
+      });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
