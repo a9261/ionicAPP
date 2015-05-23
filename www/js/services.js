@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Chats', ['dataFactory',function(dataFactory){
   // Might use a resource here that returns a JSON array
   // Some fake testing data
   var chats = [{
@@ -110,9 +110,9 @@ angular.module('starter.services', [])
       return result;
     }
   };
-})
+}])
 
-.factory('Safes',function(){
+.factory('Safes',['dataFactory',function(dataFactory){
 
   var safes = [{
     id: 0,
@@ -224,9 +224,9 @@ angular.module('starter.services', [])
     }
   };
 
-})
+}])
 
-.factory('fav',function(){
+.factory('fav',['dataFactory',function(dataFactory){
   
   var favs = [];
 
@@ -255,21 +255,63 @@ angular.module('starter.services', [])
     }
   };
 
-})
+}])
 
-.factory('notice',function(){
+.factory('notice',['dataFactory',function(dataFactory){
   
-  var favs = [];
-
+  var notices = [];
+ 
   return {
-    send: function() {
-      console.log("i send");
-      return favs;
+    send: function(noticeData) {
+      
+      //mock data
+      this.add(noticeData);
+
+      dataFactory.getAll('posts').then(function(data) {
+        
+         if(data.statusText==='OK'){
+            console.log(data.data[0]);
+         }
+      });
+
     },
-    remove: function(safe) {
-      favs.splice(favs.indexOf(safe), 1);
+    add: function(noticeData) {
+      notices.push(noticeData);
+      
+    },
+    all:function(noticeData) {
+      return notices;
     }
   };
 
-});
+}])
+.factory('dataFactory',['$http',function($http){
+
+      var rootUrl='http://jsonplaceholder.typicode.com';
+      var urlBase='';
+      var targetUrl = rootUrl+urlBase;
+
+      var dataFactory ={
+
+          getAll:function(source){
+
+            return $http.get(targetUrl+'/'+source);
+              
+          }, 
+          getItem:function(source,id){
+             return $http.get(targetUrl+'/'+source+'/'+id);
+          }, 
+          insertItem:function(source,item){
+             return $http.post(targetUrl+'/'+source,item);
+          }, 
+          updateItem:function(source,item){
+             return $http.post(targetUrl+'/'+source,item);
+          }, 
+          deleteItem:function(source,id){
+             return $http.post(targetUrl+'/'+source,{itemId:id});
+          }
+
+      };
+     return dataFactory;
+}]);
 

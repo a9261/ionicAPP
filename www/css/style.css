@@ -6,10 +6,16 @@ input[type="search"]{
 .bar .title.title-left{
 	text-align:center;
 }
+.item-note{
+	color:rgb(25,25,25);
+}
 /*-----------------------*/
 #map-canvas { height:300px;width:100%; margin: 0; padding: 0;}
 #storeName{
-
+	float:left;
+	margin-top:20%;
+	margin-left:10%;
+	font-size:20px;
 }
 #storeName::before{
  

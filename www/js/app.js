@@ -87,6 +87,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
       }
     }
   })
+  
+.state('tab.notice-list', {
+    url: '/notice-list',
+    views: {
+      'tab-notice': {
+        templateUrl: 'templates/notice-list.html',
+        controller: 'noticeCtrl'
+      }
+    }
+  })
+
 
  .state('tab.fav', {
     url: '/fav',

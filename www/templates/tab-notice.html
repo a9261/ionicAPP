@@ -3,21 +3,26 @@
     <ion-list>
 		<div class="list list-inset">
 		  <label class="item item-input">
-		    <input type="text" placeholder="店家名稱">
+		    <input type="text" placeholder="店家名稱" ng-model="noticeData.name">
 		  </label>
 		  <label class="item item-input">
-		    <input type="text" placeholder="地址">
+		    <input type="text" placeholder="地址" ng-model="noticeData.address">
 		  </label>
 		  <label class="item item-input">
-		    <input type="text" placeholder="產品名稱">
+		    <input type="text" placeholder="電話" ng-model="noticeData.phone">
 		  </label>
 		  <label class="item item-input">
-		    <input type="text" placeholder="通報原因">
+		    <input type="text" placeholder="產品名稱" ng-model="noticeData.productname">
+		  </label>
+		  <label class="item item-input">
+		    <input type="text" placeholder="通報原因" ng-model="noticeData.reason">
 		  </label>
 		  <button class="button button-positive button-block" ng-click="showConfirm()">
 			 送出
 		  </button>
+		  <a href="#/tab/notice-list" style="text-decoration: none;">已通報 {{notices.length}} 筆</a>
 		</div>
+
     </ion-list>
   </ion-content>
 </ion-view>

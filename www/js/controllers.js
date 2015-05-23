@@ -72,28 +72,51 @@ angular.module('starter.controllers', [])
 
 
 .controller('noticeCtrl', function($scope, $ionicPopup, $timeout,notice) {
-  $scope.settings = {
-    enableFriends: true
+  $scope.initial={
+     id:0,
+    name:'',
+    address:'',
+    phone:'',
+    productname:'',
+    reason:'',
+    status:'處理中'
   };
+  $scope.noticeData = {
+    id:0,
+    name:'',
+    address:'',
+    phone:'',
+    productname:'',
+    reason:'',
+    status:'處理中'
+  };
+
+  $scope.notices = notice.all();
+ 
   //confirm 視窗
   $scope.showConfirm = function(){
-
-   
-
      var confirmPopup = $ionicPopup.confirm({
         title:'匿名通報',
         subTitle:'確定要送出?'
      });
      confirmPopup.then(function(res){
         if(res){ 
-          notice.send();
+          //設定noticeData PK
+          $scope.noticeData.id=$scope.notices.length+1;
+          var pushData;
+          pushData=angular.copy($scope.noticeData);
+          notice.send(pushData);
+
+          console.log(notice.all());
+
           var alertPopup = $ionicPopup.alert({
              title: '資訊',
              template: '資料已送出'
            });
            alertPopup.then(function(res) {
-             console.log('Thank you for not eating my delicious ice cream cone');
+              angular.copy($scope.initial,$scope.noticeData);
            });
+
         }
         else{ 
             console.log('You are not sure');
@@ -111,7 +134,6 @@ angular.module('starter.controllers', [])
   $scope.remove = function(chat) {
     fav.remove(chat);
   }
-
   //假．搜尋功能 
   $scope.searchEntity={
     txt:''
