@@ -12,8 +12,11 @@
   </ion-nav-title>
   <ion-content>
     <ion-list>
-
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/fav/{{chat.id}}">
+      <div ng-if="chats.length<=0 ? true : false" class="animate-if" style="margin-top:20%;margin-left:10%">
+          <img src="/img/nu.jpg" style="width:90%" alt="">
+        <p>你還沒有新增任何最愛的店家噢！快新增一個吧！</p>
+      </div>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/fav/{{chat.id}}"> 
         <img ng-src="{{chat.face}}">
         <h2>{{chat.name}}</h2>
         <p>{{chat.lastText}}</p>

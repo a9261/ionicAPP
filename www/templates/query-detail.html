@@ -6,16 +6,18 @@
 -->
 <ion-view view-title="{{chat.name}}">
   <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <map id="map-canvas" center="-34.397, 150.644" zoom="8">
-      <info-window position="-34.397, 150.644" visible="true"> 
+    <map id="map-canvas" center="{{chat.latlng}}" zoom="16" map-type-control="false" pan-control="false">
+      <info-window position="{{chat.latlng}}"  visible="true" > 
       <span>
         <p>{{chat.name}}</p>
         <p>{{chat.lastText}}</p>
       </span> 
       </info-window>
     </map>
-    <p>{{chat.name}}</p>
+    <div id='storeName'>{{chat.name}}</div> 
+    <img ng-src="{{chat.storeimg}}" style="width: 128px; height:128px;float:right">
+    <div style="clear:both;"></div>
+    <br>
     <p>
       {{chat.lastText}}
     </p>

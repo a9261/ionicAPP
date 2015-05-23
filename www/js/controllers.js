@@ -71,19 +71,29 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('noticeCtrl', function($scope, $ionicPopup, $timeout) {
+.controller('noticeCtrl', function($scope, $ionicPopup, $timeout,notice) {
   $scope.settings = {
     enableFriends: true
   };
   //confirm 視窗
   $scope.showConfirm = function(){
+
+   
+
      var confirmPopup = $ionicPopup.confirm({
         title:'匿名通報',
         subTitle:'確定要送出?'
      });
      confirmPopup.then(function(res){
         if(res){ 
-          console.log('You are sure');
+          notice.send();
+          var alertPopup = $ionicPopup.alert({
+             title: '資訊',
+             template: '資料已送出'
+           });
+           alertPopup.then(function(res) {
+             console.log('Thank you for not eating my delicious ice cream cone');
+           });
         }
         else{ 
             console.log('You are not sure');
