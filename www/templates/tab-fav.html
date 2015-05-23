@@ -13,7 +13,7 @@
   <ion-content>
     <ion-list>
       <div ng-if="chats.length<=0 ? true : false" class="animate-if" style="margin-top:20%;margin-left:10%">
-          <img src="/img/nu.jpg" style="width:90%" alt="">
+        <img src="../img/nu.jpg" style="width:90%" alt="">
         <div style="width:100%;text-align: center;margin-left:-3%;">你還沒有新增任何最愛的店家噢！快新增一個吧！</div>
       </div>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/fav/{{chat.id}}"> 
